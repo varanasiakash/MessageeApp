@@ -53,7 +53,6 @@ public class LoginPage extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
 
 
-
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
