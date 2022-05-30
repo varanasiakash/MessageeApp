@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "484780751203",
+    "project_id": "internshipchatapp",
+    "storage_bucket": "internshipchatapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:484780751203:android:557f5581da797c10a1fb56",
+        "android_client_info": {
+          "package_name": "com.example.internshipchatapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "484780751203-necukedr2ohm73nbtim7q9i87pgp2003.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0Nmxi_S1p9fH7VmNzijJ8ubSyArQs-pw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "484780751203-necukedr2ohm73nbtim7q9i87pgp2003.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
