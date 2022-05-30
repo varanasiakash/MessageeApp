@@ -49,11 +49,6 @@ public class RegisterPage extends AppCompatActivity {
             }
         });
 
-        if (auth.getCurrentUser()!= null)
-        {
-            startActivity(new Intent(RegisterPage.this,Dashboard.class));
-            finish();
-        }
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override

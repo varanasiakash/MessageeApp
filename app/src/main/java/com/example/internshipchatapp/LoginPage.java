@@ -33,6 +33,8 @@ public class LoginPage extends AppCompatActivity {
 
         forgotPassword = findViewById(R.id.logINForgot);
 
+        createAccount = findViewById(R.id.createAccount);
+
         emailID = findViewById(R.id.emailId);
         password = findViewById(R.id.password);
 
@@ -44,17 +46,12 @@ public class LoginPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(LoginPage.this,SkipPage.class));
-                finish();
+
             }
         });
 
         auth = FirebaseAuth.getInstance();
 
-        if (auth.getCurrentUser() != null)
-        {
-            startActivity(new Intent(LoginPage.this,Dashboard.class));
-            finish();
-        }
 
 
         login.setOnClickListener(new View.OnClickListener() {
@@ -79,7 +76,6 @@ public class LoginPage extends AppCompatActivity {
             }
         });
 
-        createAccount = findViewById(R.id.createAccount);
 
         createAccount.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,6 +91,7 @@ public class LoginPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(LoginPage.this,ForgotPassword.class));
+                finish();
             }
         });
     }
