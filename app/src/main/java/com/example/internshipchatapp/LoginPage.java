@@ -46,7 +46,7 @@ public class LoginPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(LoginPage.this,SkipPage.class));
-
+                finish();
             }
         });
 
@@ -56,22 +56,14 @@ public class LoginPage extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                auth.signInWithEmailAndPassword(emailID.getText().toString(),password.getText().toString())
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful())
-                                {
-                                    startActivity(new Intent(LoginPage.this,Dashboard.class));
-                                    Toast.makeText(LoginPage.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                                }
-                                else
-                                {
-                                    Toast.makeText(LoginPage.this, task.getException().getLocalizedMessage()
-                                            , Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
+                if (emailID.getText().toString().isEmpty() || password.getText().toString().isEmpty())
+                {
+                    Toast.makeText(LoginPage.this, "Invalid input", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    handleLogin();
+                }
             }
         });
 
@@ -93,5 +85,24 @@ public class LoginPage extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    private void handleLogin() {
+        auth.signInWithEmailAndPassword(emailID.getText().toString(),password.getText().toString())
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful())
+                        {
+                            startActivity(new Intent(LoginPage.this,Dashboard.class));
+                            Toast.makeText(LoginPage.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                        {
+                            Toast.makeText(LoginPage.this, "Login not possible"
+                                    , Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 }

@@ -53,10 +53,14 @@ public class RegisterPage extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (username.getText().toString().isEmpty() && email.getText().toString().isEmpty() &&
-                        password.getText().toString().isEmpty() && conPassword.getText().toString().isEmpty())
+                if (username.getText().toString().isEmpty() || email.getText().toString().isEmpty() ||
+                        password.getText().toString().isEmpty() || conPassword.getText().toString().isEmpty())
                 {
-                    if(password.getText().toString() == conPassword.getText().toString())
+                    Toast.makeText(RegisterPage.this, "Invalid Input", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    if((password.getText().toString()).compareTo(conPassword.getText().toString()) == 0)
                     {
                         handleSignUp();
                     }
@@ -64,11 +68,6 @@ public class RegisterPage extends AppCompatActivity {
                     {
                         Toast.makeText(RegisterPage.this, "Password in not in Sync", Toast.LENGTH_SHORT).show();
                     }
-
-                }
-                else
-                {
-                    Toast.makeText(RegisterPage.this, "Invalid Input", Toast.LENGTH_SHORT).show();
                 }
 
             }
