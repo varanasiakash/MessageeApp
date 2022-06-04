@@ -57,6 +57,8 @@ public class Dashboard extends AppCompatActivity {
             public void onClick(View view) {
                 chat.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.background));
                 chat.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
+                call.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
+                call.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.background));
                 fragment = new ChatFragment();
                 getSupportFragmentManager().beginTransaction().replace(R.id.dashboardFragment,fragment).commit();
             }
@@ -67,6 +69,8 @@ public class Dashboard extends AppCompatActivity {
             public void onClick(View view) {
                 call.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.background));
                 call.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
+                chat.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
+                chat.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.background));
                 fragment = new CallFragment();
                 getSupportFragmentManager().beginTransaction().replace(R.id.dashboardFragment,fragment).commit();
             }
