@@ -34,12 +34,10 @@ public class MainActivity extends AppCompatActivity {
         {
             if(user_check != null)
             {
-                Toast.makeText(this, "successful", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(this, Dashboard.class));
             }
             else
             {
-                Toast.makeText(this, "start successful", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(this,SkipPage.class));
             }
             finish();

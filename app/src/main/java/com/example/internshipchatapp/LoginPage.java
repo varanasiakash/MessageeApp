@@ -31,7 +31,7 @@ public class LoginPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
 
-        forgotPassword = findViewById(R.id.logINForgot);
+        forgotPassword = findViewById(R.id.forgotPassword);
 
         createAccount = findViewById(R.id.createAccount);
 
@@ -52,7 +52,6 @@ public class LoginPage extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
 
-
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -68,6 +67,8 @@ public class LoginPage extends AppCompatActivity {
         });
 
 
+
+
         createAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,8 +77,6 @@ public class LoginPage extends AppCompatActivity {
             }
         });
 
-
-
         forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -85,6 +84,7 @@ public class LoginPage extends AppCompatActivity {
                 finish();
             }
         });
+
     }
 
     private void handleLogin() {
@@ -105,4 +105,5 @@ public class LoginPage extends AppCompatActivity {
                     }
                 });
     }
+
 }

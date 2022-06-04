@@ -36,10 +36,10 @@ public class RegisterPage extends AppCompatActivity {
         email = findViewById(R.id.emailRegister);
         password = findViewById(R.id.passwordRegister);
         conPassword = findViewById(R.id.confirmPassword);
-         back = findViewById(R.id.backMessageRegister);
-         login = findViewById(R.id.loginRegister);
+        back = findViewById(R.id.backMessageRegister);
+        login = findViewById(R.id.loginRegister);
 
-        register = findViewById(R.id.createAccount);
+        register = findViewById(R.id.createAccountRegister);
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,39 +49,40 @@ public class RegisterPage extends AppCompatActivity {
             }
         });
 
+       register.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               if (username.getText().toString().isEmpty() || email.getText().toString().isEmpty() ||
+                       password.getText().toString().isEmpty() || conPassword.getText().toString().isEmpty())
+               {
+                   Toast.makeText(RegisterPage.this, "Invalid Input", Toast.LENGTH_SHORT).show();
+               }
+               else
+               {
+                   if((password.getText().toString()).compareTo(conPassword.getText().toString()) == 0)
+                   {
+                       handleSignUp();
+                   }
+                   else
+                   {
+                       Toast.makeText(RegisterPage.this, "Password in not in Sync", Toast.LENGTH_SHORT).show();
+                   }
+               }
 
-        register.setOnClickListener(new View.OnClickListener() {
+           }
+       });
+
+        login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (username.getText().toString().isEmpty() || email.getText().toString().isEmpty() ||
-                        password.getText().toString().isEmpty() || conPassword.getText().toString().isEmpty())
-                {
-                    Toast.makeText(RegisterPage.this, "Invalid Input", Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
-                    if((password.getText().toString()).compareTo(conPassword.getText().toString()) == 0)
-                    {
-                        handleSignUp();
-                    }
-                    else
-                    {
-                        Toast.makeText(RegisterPage.this, "Password in not in Sync", Toast.LENGTH_SHORT).show();
-                    }
-                }
-
+                startActivity(new Intent(RegisterPage.this,LoginPage.class));
+                finish();
             }
         });
 
-      login.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View view) {
-              startActivity(new Intent(RegisterPage.this,LoginPage.class));
-              finish();
-          }
-      });
-    }
 
+
+    }
     private void handleSignUp() {
         auth.createUserWithEmailAndPassword(email.getText().toString(),password.getText().toString())
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -91,7 +92,7 @@ public class RegisterPage extends AppCompatActivity {
                         {
                             //adding username, emailID and profile pic in the database(firebase)
                             FirebaseDatabase.getInstance().getReference("user/"+FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                    .setValue(new UsersChat(username.getText().toString(),email.getText().toString(),""));
+                                 .setValue(new UsersChat(username.getText().toString(),email.getText().toString(),""));
 
                             startActivity(new Intent(RegisterPage.this,LoginPage.class));
                             Toast.makeText(RegisterPage.this, "Created an Account", Toast.LENGTH_SHORT).show();
@@ -99,4 +100,6 @@ public class RegisterPage extends AppCompatActivity {
                     }
                 });
     }
+
+
 }

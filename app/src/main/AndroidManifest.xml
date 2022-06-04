@@ -34,7 +34,11 @@
             android:exported="false" />
         <activity
             android:name=".RegisterPage"
-            android:exported="false" />
+            android:exported="false">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
         <activity
             android:name=".LoginPage"
             android:exported="false" />
